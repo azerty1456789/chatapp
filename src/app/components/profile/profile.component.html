@@ -1,0 +1,90 @@
+<section class="gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8">
+          <div class="card shadow-lg rounded-3">
+            <div class="card-body p-5">
+              <h2 class="fw-bold text-center mb-4">Modify Profile</h2>
+              <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="container mt-4">
+                  <div class="row">
+                    <!-- Photo and Browse Button Column -->
+                    <div class="col-md-6 mb-4">
+                          <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                            <label for="photo" class="mb-2">Upload Photo</label>
+                            <div class="custom-file mb-3">
+                              <input id="photo" type="file" (change)="onFileSelected($event)" class="custom-file-input">
+                              <label class="custom-file-label" for="photo">Choose file...</label>
+                            </div>
+                            <div *ngIf="photoPreview" class="mt-3">
+                              <img [src]="photoPreview" alt="Photo Preview" class="img-thumbnail" style="max-width: 150px; max-height: 150px;">
+                            </div>
+                          </div>
+                      </div>
+                
+                    <!-- Other Inputs Column -->
+                    <div class="col-md-6">
+                        <div class="card-body">
+                          <div class="form-outline mb-4">
+                            <input type="text" id="name" class="form-control form-control-lg" formControlName="name" />
+                            <label class="form-label" for="name">Name</label>
+                            <div *ngIf="profileForm.get('name')?.touched && profileForm.get('name')?.invalid" class="invalid-feedback d-block">
+                              <small>Name is required.</small>
+                            </div>
+                          </div>
+                
+                          <div class="form-outline mb-4">
+                            <input type="date" id="birthdate" class="form-control form-control-lg" formControlName="birthdate" />
+                            <label class="form-label" for="birthdate">Birthdate</label>
+                            <div *ngIf="profileForm.get('birthdate')?.touched && profileForm.get('birthdate')?.invalid" class="invalid-feedback d-block">
+                              <small>Birthdate is required.</small>
+                            </div>
+                          </div>
+                
+                          <div class="form-outline mb-4">
+                            <select id="sex" class="form-control form-control-lg" formControlName="sex">
+                              <option value="">Select your sex</option>
+                              <option value="Male">Male</option>
+                              <option value="Female">Female</option>
+                            </select>
+                            <label class="form-label" for="sex">Sex</label>
+                            <div *ngIf="profileForm.get('sex')?.touched && profileForm.get('sex')?.invalid" class="invalid-feedback d-block">
+                              <small>Sex is required.</small>
+                            </div>
+                          </div>
+                
+                          <div class="form-outline mb-4">
+                            <select id="country" class="form-control form-control-lg" formControlName="country">
+                              <option *ngFor="let country of countries" [value]="country.shortName">{{ country.name }}</option>
+                            </select>
+                            <label class="form-label" for="country">Country</label>
+                            <div *ngIf="profileForm.get('country')?.touched && profileForm.get('country')?.invalid" class="invalid-feedback d-block">
+                              <small>Country is required.</small>
+                            </div>
+                          </div>
+                          <div class="form-outline mb-4">
+                            <select id="state" class="form-control form-control-lg" formControlName="state" [disabled]="states.length === 0">
+                              <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                            </select>
+                            <label class="form-label" for="state">State</label>
+                            <div *ngIf="profileForm.get('state')?.touched && profileForm.get('state')?.invalid" class="invalid-feedback d-block">
+                              <small>State is required.</small>
+                            </div>
+                          </div>
+                
+                         
+                        </div>
+
+                      </div>
+                      <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+                      </div>  
+                  </div>
+                </form>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

@@ -1,0 +1,142 @@
+<section class=" gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-6">
+        <div class="card shadow-lg rounded-3">
+          <div class="card-body p-5">
+            <h2 class="fw-bold text-center mb-4">Sign Up</h2>
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+              <!-- Name -->
+              <div class="form-outline mb-4">
+                <input type="text" id="name" class="form-control form-control-lg" formControlName="name" required />
+                <label class="form-label" for="name">Name</label>
+                @if (registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid) {
+
+                @if (registrationForm.get('name')?.errors?.['required']) {
+                  <div class="invalid-feedback d-block">
+                      <small>Name is required.</small>
+                  </div>}}
+              </div>
+
+              <!-- Birthdate -->
+              <div class="form-outline mb-4">
+                <input type="date" id="birthdate" class="form-control form-control-lg" formControlName="birthdate" required />
+                <label class="form-label" for="birthdate">Birthdate</label>
+                @if (registrationForm.get('birthdate')?.touched && registrationForm.get('birthdate')?.invalid) {
+
+                @if (registrationForm.get('birthdate')?.errors?.['required']) {
+                  <div class="invalid-feedback d-block">
+                      <small>Birthdate is required.</small>
+                  </div>}}
+              </div>
+
+              <!-- Sex -->
+              <div class="form-outline mb-4">
+                <select id="sex" class="form-select form-select-lg" formControlName="sex" required>
+                  <option value="" disabled selected>Select sex</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <label class="form-label" for="sex">Sex</label>
+                @if (registrationForm.get('sex')?.touched && registrationForm.get('sex')?.invalid) {
+                @if (registrationForm.get('sex')?.errors?.['required']) {
+                  <div class="invalid-feedback d-block">
+                      <small>Sex is required.</small>
+                  </div>}}
+              </div>
+              
+  <!-- country -->
+  <div class="form-outline mb-4">
+    <select id="country" class="form-select form-select-lg" formControlName="country" required>
+      <option value="" disabled selected>Select country</option>
+      @for (country of countries; track $index) {<option [value]="country.shortName">{{ country.name }}</option>}
+
+    </select>
+    <label class="form-label" for="country">Country</label>
+    @if (registrationForm.get('country')?.touched && registrationForm.get('country')?.invalid) {
+
+    @if (registrationForm.get('country')?.errors?.['required']) {
+      <div class="invalid-feedback d-block">
+          <small>Country is required.</small>
+      </div>}}
+  </div>
+
+   <!-- state -->
+   <div class="form-outline mb-4">
+    <select id="state" class="form-select form-select-lg" formControlName="state" [disabled]="!registrationForm.get('state')?.enabled"  required>
+      <option value="" disabled selected>Select state</option>
+      @for (state of states; track $index) {                  
+        <option [value]="state">{{ state }}</option>
+      }
+    </select>
+    <label class="form-label" for="state">State</label>
+    @if (registrationForm.get('state')?.touched && registrationForm.get('state')?.invalid) {
+
+    @if (registrationForm.get('state')?.errors?.['required']) {
+      <div class="invalid-feedback d-block">
+          <small>State is required.</small>
+      </div>}}
+  </div>           
+              
+            
+              
+
+
+              <!-- Email -->
+              <div class="form-outline mb-4">
+                <input type="email" id="email" class="form-control form-control-lg" formControlName="email" required />
+                <label class="form-label" for="email">Email</label>
+                @if (registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid) {
+                  <div class="invalid-feedback d-block">
+                    @if (registrationForm.get('email')?.errors?.['required']) {
+                      <small>Email is required.</small>}
+                    @else if (registrationForm.get('email')?.errors?.['email']) {
+                      <small>Invalid email format.</small>
+                    }
+                  </div>}
+              </div>
+
+              <!-- Password -->
+              <div class="form-outline mb-4">
+                <input type="password" id="password" class="form-control form-control-lg" formControlName="password" required />
+                <label class="form-label" for="password">Password</label>
+                @if (registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid) {
+                  <div class="invalid-feedback d-block">
+                    @if (registrationForm.get('password')?.errors?.['required']) {
+                      <small>Password is required.</small>
+                    }
+                    @else if (registrationForm.get('password')?.errors?.['minlength']) {
+                      <small>Password must be at least 6 characters long.</small>
+                    }
+                  </div>}
+              </div>
+
+              <!-- Confirm Password -->
+              <div class="form-outline mb-4">
+                <input type="password" id="confirmPassword" class="form-control form-control-lg" formControlName="confirmPassword" required />
+                <label class="form-label" for="confirmPassword">Confirm Password</label>
+                @if (registrationForm.get('confirmPassword')?.touched && registrationForm.get('confirmPassword')?.invalid) {
+                  <div class="invalid-feedback d-block">
+                    @if (registrationForm.get('confirmPassword')?.errors?.['required']) {
+                      <small>Confirm Password is required.</small>
+                    }
+                    @else if (registrationForm.errors?.['passwordMismatch']) {
+                      <small>Passwords do not match.</small>
+                    }
+                  </div>}
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button ngbButton class="btn btn-primary btn-lg px-5" type="submit" [disabled]="registrationForm.invalid">Register</button>
+              </div>
+
+              <div class="text-center mt-3">
+                <p class="mb-0">Already have an account? <a href="#" class="text-decoration-none fw-bold">Login</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

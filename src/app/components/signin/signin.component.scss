@@ -1,0 +1,78 @@
+.gradient-custom {
+  /* Customize the gradient background */
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  min-height: 100vh;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+h2 {
+  color: #6a11cb; /* Match the heading color with the gradient */
+}
+
+.form-outline {
+  position: relative;
+}
+
+.form-outline input {
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  transition: box-shadow 0.3s ease;
+}
+
+.form-outline input:focus {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.form-label {
+  position: absolute;
+  top: -0.625rem;
+  left: 0.75rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+input:focus + .form-label,
+input:not(:placeholder-shown) + .form-label {
+  top: -1.5rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  color: #6a11cb;
+}
+
+.invalid-feedback {
+  display: none;
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+
+input.ng-invalid.ng-touched ~ .invalid-feedback {
+  display: block;
+}
+
+.btn-primary {
+  background: #6a11cb;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #2575fc;
+}
+
+.text-decoration-none {
+  color: #6a11cb;
+}
+
+.text-decoration-none:hover {
+  color: #2575fc;
+  text-decoration: underline;
+}
